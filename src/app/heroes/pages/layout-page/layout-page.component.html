@@ -1,1 +1,46 @@
-<router-outlet></router-outlet>
+<!-- Creates a layout with a left and right sidenav and implicit content. -->
+<mat-sidenav-container fullscreen>
+  <mat-sidenav #sidenav mode="push" [ngStyle]="{ width: '250px' }" >
+    <mat-toolbar color="primary">
+      <span>Menú</span>
+      <span class="spacer"></span>
+      <button mat-icon-button (click)="sidenav.toggle()" >
+        <mat-icon>menu</mat-icon>
+      </button>
+    </mat-toolbar>
+
+    <mat-nav-list>
+      <mat-list-item
+        *ngFor="let menuItem of sidebarItems"
+        [routerLink]="menuItem.url"
+        (click)="sidenav.toggle()"
+        >
+        <!-- matListItemIcon: Me centra los iconos con el texto del label haciendo que se vea todo bien, sino se ve desalineado  -->
+        <mat-icon
+                matListItemIcon
+                  >
+                  {{ menuItem.icon }}
+        </mat-icon>
+        {{menuItem.label}}
+      </mat-list-item>
+    </mat-nav-list>
+
+  </mat-sidenav>
+
+  <mat-toolbar color="primary" >
+    <button mat-icon-button (click)="sidenav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span class="spacer"></span>
+    <button mat-button >
+      <mat-icon>logout</mat-icon>
+      Logout
+    </button>
+  </mat-toolbar>
+
+  <div class="container">
+    <router-outlet></router-outlet>
+  </div>
+
+</mat-sidenav-container>
+

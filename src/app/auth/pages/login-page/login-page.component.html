@@ -1,1 +1,34 @@
-<p>login-page works!</p>
+<div class="flex flex-column">
+
+  <p class="text-lg mb-4">Login</p>
+
+  <mat-form-field>
+    <mat-label>Usuario:</mat-label>
+    <input type="text" matInput placeholder="Nombre de Usuario" >
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Contraseña:</mat-label>
+    <input type="password" matInput placeholder="Contraseña" >
+  </mat-form-field>
+
+  <button mat-button appearance="filled" color="primary" >
+    <!-- Como funciona Mat-Icon -->
+    <!-- 1- Crear el elemento html <mat-icon></mat-icon>
+         2- Ir al Buscador de Iconos de Material-Design https://fonts.google.com/icons, ahi buscar el icono que uno quiere
+         3- Buscar el nombre del Icono en la Barra lateral de la pagina, y pegar el Nombre en el interior  del elemento html
+         4- Listo ya reemplazó el texto por el icono deseado. Asi de fácil  -->
+
+    <mat-icon>login</mat-icon>
+    Ingresar
+  </button>
+
+  <div class="flex justify-content-end mt-5">
+    <a routerLink="/auth/login">¿Olvidaste tu contraseña?</a>
+  </div>
+
+  <div class="flex justify-content-center mt-5">
+    <a routerLink="/auth/register">Registrarse</a>
+  </div>
+
+</div>
