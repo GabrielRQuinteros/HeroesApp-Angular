@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { catchError, Observable, of } from 'rxjs';
 import { Hero } from '../interfaces/hero.interface';
 import { environments } from '../../environments/environments.dev';
 
@@ -16,12 +16,26 @@ export class HeroesService {
 
 
 
+
+  // URLS BUILDERS
+  private getHeroesUrl(): string {
+    return `${this.baseURL}/heroes`;
+  }
+
+  public getHeroByURL( id: string ): string {
+    return `${this.baseURL}/heroes/${id}`;
+  }
+
+  // REQUEST METHODS
   public getHeroes(): Observable<Hero[]> {
       return this.httpClient.get<Hero[]>( this.getHeroesUrl() );
   }
 
-  private getHeroesUrl(): string {
-    return `${this.baseURL}/heroes`;
+  public getHeroById( id: string ): Observable<Hero | undefined> {
+    return this.httpClient.get<Hero | undefined>( this.getHeroByURL(id) )
+                          .pipe(
+                            catchError( error => of(undefined) )
+                          );
   }
 
 

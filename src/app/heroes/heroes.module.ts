@@ -9,6 +9,7 @@ import { SearchPageComponent } from './pages/search-page/search-page.component';
 import { HeroPageComponent } from './pages/hero-page/hero-page.component';
 import { MaterialModule } from '../material/material.module';
 import { HeroCardComponent } from './components/hero-card/hero-card.component';
+import { HeroImagePipe } from './pipes/hero-image.pipe';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { HeroCardComponent } from './components/hero-card/hero-card.component';
     NewPageComponent,
     SearchPageComponent,
     HeroPageComponent,
-    HeroCardComponent
+    HeroCardComponent,
+    HeroImagePipe
   ],
   imports: [
     CommonModule,
