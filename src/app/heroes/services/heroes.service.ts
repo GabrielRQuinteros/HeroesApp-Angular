@@ -11,6 +11,7 @@ export class HeroesService {
 
   private baseURL: string = environments.backendBaseUrl;
 
+  private pagesLimit: number = 6;
 
   constructor(private httpClient: HttpClient ) { }
 
@@ -26,6 +27,11 @@ export class HeroesService {
     return `${this.baseURL}/heroes/${id}`;
   }
 
+  public getHeroesSuggestionsByNameURL(name: string): string {
+    return `${this.baseURL}/heroes?q=${name}&_limit=${this.pagesLimit}`;
+  }
+
+
   // REQUEST METHODS
   public getHeroes(): Observable<Hero[]> {
       return this.httpClient.get<Hero[]>( this.getHeroesUrl() );
@@ -38,5 +44,11 @@ export class HeroesService {
                           );
   }
 
+  public getHeroesSuggestionsByName( name: string ): Observable<Hero[]> {
+    return this.httpClient.get<Hero[]>( this.getHeroesSuggestionsByNameURL(name) )
+                          .pipe(
+                            catchError( error => of([]))
+                          );
+  }
 
 }
