@@ -12,7 +12,11 @@
     <input type="password" matInput placeholder="Contraseña" >
   </mat-form-field>
 
-  <button mat-button appearance="filled" color="primary" >
+  <button mat-button
+          appearance="filled"
+          color="primary"
+          (click)="onLogin()"
+          >
     <!-- Como funciona Mat-Icon -->
     <!-- 1- Crear el elemento html <mat-icon></mat-icon>
          2- Ir al Buscador de Iconos de Material-Design https://fonts.google.com/icons, ahi buscar el icono que uno quiere
