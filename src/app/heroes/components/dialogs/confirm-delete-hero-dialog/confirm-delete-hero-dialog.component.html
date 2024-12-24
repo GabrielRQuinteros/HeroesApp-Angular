@@ -1,0 +1,18 @@
+<h2 mat-dialog-title>¿Está seguro?</h2>
+<mat-divider></mat-divider>
+<mat-dialog-content>
+<p>Este proceso no es reversible, esta a punto de eliminar a {{ hero.superhero }}</p>
+</mat-dialog-content>
+<mat-dialog-actions class="justify-content-between" >
+  <button mat-button
+          (click)="onNoClick()"
+          color="primary"
+          >No Thanks
+  </button>
+  <button mat-button
+          cdkFocusInitial
+          (click)="onConfirm()"
+          color="warn"
+          >Ok
+  </button>
+</mat-dialog-actions>
